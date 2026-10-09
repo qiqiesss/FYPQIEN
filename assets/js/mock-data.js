@@ -70,62 +70,79 @@
       id: 'appt-today-1',
       dateISO: todayISO,
       time: '09:00',
-      patientName: PATIENTS[0].name,
-      phone: PATIENTS[0].phone,
+      endTime: '10:00',
+      patientName: 'Ahmad Zulkarnain',
+      phone: '+60 12-345 6789',
       treatmentId: 'scaling',
-      notes: 'Routine scaling for upper and lower arches',
-      status: 'scheduled'
+      details: 'Scaling & Polishing',
+      statusPill: 'Completed',
+      dentistInitials: 'DZ',
+      notes: ''
     });
     appointments.push({
       id: 'appt-today-2',
       dateISO: todayISO,
-      time: '12:00',
-      patientName: PATIENTS[1].name,
-      phone: PATIENTS[1].phone,
-      treatmentId: 'filling',
-      notes: 'Occlusal filling on lower left molar',
-      status: 'scheduled'
+      time: '10:00',
+      endTime: '11:00',
+      patientName: 'Siti Nurhaliza',
+      phone: '+60 13-456 7890',
+      treatmentId: 'checkup',
+      details: 'Initial Checkup',
+      statusPill: 'Canceled',
+      dentistInitials: 'DA',
+      notes: 'Patient no-show'
     });
     appointments.push({
       id: 'appt-today-3',
       dateISO: todayISO,
+      time: '11:30',
+      endTime: '12:30',
+      patientName: 'Mohd Faizal',
+      phone: '+60 14-567 8901',
+      treatmentId: 'filling',
+      details: 'Tooth Filling',
+      statusPill: 'Completed',
+      dentistInitials: 'DZ',
+      notes: ''
+    });
+    appointments.push({
+      id: 'appt-today-4',
+      dateISO: todayISO,
+      time: '13:00',
+      endTime: '14:00',
+      patientName: 'Tan Mei Ling',
+      phone: '+60 16-789 0123',
+      treatmentId: 'scaling',
+      details: 'Teeth Whitening',
+      statusPill: 'Waiting',
+      dentistInitials: 'DF',
+      notes: ''
+    });
+    appointments.push({
+      id: 'appt-today-5',
+      dateISO: todayISO,
       time: '14:30',
-      patientName: PATIENTS[0].name,
-      phone: PATIENTS[0].phone,
-      treatmentId: 'checkup',
-      notes: "Same-day review check-up after this morning's scaling",
-      status: 'scheduled'
-    });
-
-    appointments.push({
-      id: 'appt-tom-1',
-      dateISO: tomorrowISO,
-      time: '09:30',
-      patientName: PATIENTS[3].name,
-      phone: PATIENTS[3].phone,
+      endTime: '15:30',
+      patientName: 'Nurul Huda',
+      phone: '+60 19-333 4444',
       treatmentId: 'extraction',
-      notes: 'Simple extraction of upper premolar',
-      status: 'scheduled'
+      details: 'Tooth Extraction',
+      statusPill: 'Canceled',
+      dentistInitials: 'DZ',
+      notes: 'Patient called to cancel'
     });
     appointments.push({
-      id: 'appt-tom-2',
-      dateISO: tomorrowISO,
-      time: '11:00',
-      patientName: PATIENTS[4].name,
-      phone: PATIENTS[4].phone,
-      treatmentId: 'mos',
-      notes: 'Impacted wisdom tooth — review OPG X-ray night before',
-      status: 'scheduled'
-    });
-    appointments.push({
-      id: 'appt-tom-3',
-      dateISO: tomorrowISO,
-      time: '14:00',
-      patientName: PATIENTS[5].name,
-      phone: PATIENTS[5].phone,
+      id: 'appt-today-6',
+      dateISO: todayISO,
+      time: '15:30',
+      endTime: '16:30',
+      patientName: 'Ramesh Singh',
+      phone: '+60 12-555 6666',
       treatmentId: 'braces',
-      notes: 'Adjustment appointment for fixed braces',
-      status: 'scheduled'
+      details: 'Braces Adjustment',
+      statusPill: 'Waiting',
+      dentistInitials: 'DA',
+      notes: ''
     });
 
     return appointments;
