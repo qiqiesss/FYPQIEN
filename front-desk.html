@@ -64,38 +64,35 @@
     <main class="main-content" id="dashboard">
 
       <!-- Topbar -->
-      <div class="topbar mb-3">
-        <div class="breadcrumb-text text-muted mb-2" style="font-size: 0.9rem;">Dashboard / <span
-            class="text-dark fw-medium">Calendar</span></div>
-        <div class="header-section d-flex justify-content-between align-items-start">
+      <div class="topbar">
+        <div class="breadcrumb-text">Dashboard / <span>Calendar</span></div>
+        <div class="header-section">
           <div class="header-title">
-            <h2 class="fw-bold mb-1" style="font-size: 2rem;">Calendar</h2>
-            <p class="text-muted" style="font-size: 0.95rem;">Stay Organized and On Track with Your Personalized Clinic
-              Schedule</p>
+            <h2>Calendar</h2>
+            <p>Stay Organized and On Track with Your Personalized Clinic Schedule</p>
           </div>
           <div class="header-actions d-flex gap-2">
-            <button class="btn btn-white border shadow-sm d-flex align-items-center fw-medium px-3 py-2"
-              id="todayStatsBtn" onclick="showTodayStats()">
+            <button class="btn btn-white border shadow-sm d-flex align-items-center fw-medium px-3 py-2 bg-white"
+              onclick="showTodayStats()">
               <i class="bi bi-bar-chart-fill me-2 text-secondary"></i> Today Stats
             </button>
             <button class="btn btn-teal text-white shadow-sm d-flex align-items-center fw-medium px-3 py-2"
-              onclick="document.getElementById('mockNewBtn').click()">
+              id="mockNewBtn" style="background-color: var(--primary-teal); border: none;">
               <i class="bi bi-plus-lg me-2"></i> New Appointment
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Schedule Card Container -->
-      <div class="schedule-card">
-
+      <!-- Calendar Container -->
+      <div class="calendar-container">
         <!-- Main Toolbar -->
         <div class="calendar-toolbar">
           <div class="d-flex align-items-center gap-3">
             <div class="fw-bold text-dark fs-5"><i class="bi bi-calendar-event text-teal me-2"></i> <span
                 id="scheduleTitleLabel">All Scheduled</span></div>
-            <span class="badge bg-light text-secondary border px-2 py-1 fw-normal"
-              id="appointmentCountBadge">Appointments</span>
+            <span class="badge bg-light text-secondary border px-2 py-1 fw-normal" id="appointmentCountBadge">0
+              Appointments Today</span>
           </div>
           <div class="d-flex align-items-center gap-2 flex-wrap">
             <div class="input-group input-group-sm" style="width: 220px;">
@@ -140,7 +137,7 @@
         <div class="timeline-view" id="slotTable" aria-live="polite">
           <!-- JS dynamically populates -->
         </div>
-      </div> <!-- End Schedule Card Container -->
+      </div> <!-- End Calendar Container -->
 
       <!-- Hidden required elements for JS to not crash -->
       <div id="progressStrip" class="hidden" style="display: none;"></div>
