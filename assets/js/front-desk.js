@@ -183,11 +183,30 @@
 
   function renderSummary() {
     const list = document.getElementById('summaryList');
-    if (!list) return;
+    const badge = document.getElementById('appointmentCountBadge');
+    
     const dateISO = utils.toDateISO(currentDate);
     const appts = getAppointmentsForDate(dateISO);
     const todayISO = utils.toDateISO(new Date());
     let total = appts.length;
+    
+    if (badge) {
+      let dayWord = 'Today';
+      if (dateISO !== todayISO) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        
+        if (dateISO === utils.toDateISO(tomorrow)) dayWord = 'Tomorrow';
+        else if (dateISO === utils.toDateISO(yesterday)) dayWord = 'Yesterday';
+        else dayWord = 'on ' + utils.formatReadableDate(currentDate);
+      }
+      badge.textContent = total + ' Appointments ' + dayWord;
+    }
+    
+    if (!list) return;
+
     let pastCompleted = 0;
     let remaining = 0;
     if (dateISO === todayISO) {
