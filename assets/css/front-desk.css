@@ -4,6 +4,10 @@
   --primary-color: #000000;
   --border-color: #f1f5f9;
   --text-muted: #94a3b8;
+  --primary-teal: #0d9488;
+  --primary-teal-hover: #0f766e;
+  --bg-slate: #f8fafc;
+  --text-main: #1e293b;
 }
 
 body {
@@ -13,6 +17,7 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .app-container {
@@ -33,6 +38,7 @@ body {
   padding: 1.5rem 1rem;
   overflow-y: auto;
   background-color: #fcfcfc;
+  z-index: 100;
 }
 
 .user-profile {
@@ -128,10 +134,12 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: #ffffff;
 }
 
+/* Topbar */
 .topbar {
-  padding: 1.5rem 2rem 0;
+  padding: 1.5rem 2rem;
 }
 
 .breadcrumb-text {
@@ -165,174 +173,6 @@ body {
   margin: 0;
 }
 
-/* Tab Nav */
-.tab-nav {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  padding: 1.5rem 2rem 0;
-  gap: 1.5rem;
-}
-
-.tab-item {
-  padding: 0.75rem 0;
-  color: var(--text-muted);
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  position: relative;
-}
-
-.tab-item i {
-  margin-right: 0.4rem;
-}
-
-.tab-item.active {
-  color: #000;
-}
-
-.tab-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #000;
-}
-
-.tab-actions {
-  margin-left: auto;
-  display: flex;
-  gap: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 0.4rem 0.75rem;
-}
-
-.search-box input {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 0.85rem;
-  margin-left: 0.5rem;
-  width: 120px;
-}
-
-.btn-action {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  color: #0f172a;
-  border-radius: 6px;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.btn-action:hover {
-  background: #f8fafc;
-}
-
-.btn-new {
-  background: #000;
-  color: #fff;
-  border: none;
-}
-
-.btn-new:hover {
-  background: #1e293b;
-  color: #fff;
-}
-
-/* Sub-toolbar (Date Nav) */
-.date-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.date-nav {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.date-nav h4 {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.nav-arrows {
-  display: flex;
-  gap: 0.25rem;
-}
-
-.nav-arrows button {
-  background: transparent;
-  border: none;
-  color: #64748b;
-  cursor: pointer;
-}
-
-.nav-arrows button:hover {
-  color: #000;
-}
-
-.btn-today {
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  padding: 0.2rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.view-toggles {
-  display: flex;
-  background: #f1f5f9;
-  border-radius: 6px;
-  padding: 2px;
-}
-
-.view-toggle {
-  padding: 0.3rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #64748b;
-  border: none;
-  background: transparent;
-  border-radius: 4px;
-}
-
-.view-toggle.active {
-  background: #fff;
-  color: #000;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-:root {
-  --primary-teal: #0d9488;
-  --primary-teal-hover: #0f766e;
-  --bg-slate: #f8fafc;
-  --border-color: #e2e8f0;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-}
-
 /* Calendar Card & Toolbar */
 .calendar-container {
   background: #ffffff;
@@ -340,6 +180,9 @@ body {
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  margin: 1.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .calendar-toolbar {
@@ -367,7 +210,7 @@ body {
 .timeline-view {
   position: relative;
   background: #ffffff;
-  max-height: auto;
+  height: calc(100vh - 340px);
   overflow-y: auto;
 }
 
@@ -443,32 +286,6 @@ body {
   color: #991b1b;
 }
 
-/* Current Time Indicator Line */
-.current-time-indicator {
-  position: absolute;
-  left: 90px;
-  right: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-
-.current-time-dot {
-  width: 10px;
-  height: 10px;
-  background-color: #ef4444;
-  border-radius: 50%;
-  margin-left: -5px;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
-}
-
-.current-time-line {
-  flex-grow: 1;
-  height: 2px;
-  background-color: #ef4444;
-}
-
 /* Dentist Avatars */
 .dentist-avatar {
   width: 28px;
@@ -489,16 +306,6 @@ body {
   font-weight: 600;
 }
 
-/* Schedule Card Container */
-.schedule-card {
-  background-color: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: 1rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  overflow: hidden;
-  margin-top: 1rem;
-}
-
 /* Custom Buttons */
 .btn-teal {
   background-color: #0d9488;
@@ -506,4 +313,8 @@ body {
 
 .btn-teal:hover {
   background-color: #0f766e;
+}
+
+.hidden {
+  display: none !important;
 }
