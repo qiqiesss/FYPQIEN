@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klinik Pergigian Sofea Taman Tas - Dentist Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="assets/css/home-dentist.css">
+</head>
+
+<body class="h-screen flex overflow-hidden text-slate-800 bg-[#e5e9f0] p-6">
+
+  <!-- App Container Wrapper -->
+  <div class="flex flex-1 overflow-hidden bg-white rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.05)] w-full">
+
+    <!-- Sidebar -->
+  <aside id="sidebar"
+    class="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 z-10 transition-all duration-300 ease-in-out px-4 py-6"
+    style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+    <div class="flex items-center p-2 border border-slate-200 rounded-lg mb-8 bg-white">
+      <div class="w-8 h-8 rounded-md overflow-hidden shrink-0 mr-3 bg-transparent flex items-center justify-center">
+        <img src="assets/images/icon.jpg" alt="Logo" class="w-full h-full object-cover rounded-lg">
+      </div>
+      <div>
+        <div class="font-bold text-slate-900 text-[0.9rem]">Klinik Sofea.</div>
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide bg-slate-100 text-slate-500 border border-slate-200 mt-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Dentist
+        </div>
+      </div>
+    </div>
+
+    <div class="text-[0.7rem] font-bold text-slate-400 uppercase tracking-[0.05em] mb-3 pl-2">My Pages</div>
+    
+    <a href="home-dentist.html" class="flex items-center gap-3 px-3 py-[0.6rem] bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-slate-100 rounded-lg font-semibold mb-1 transition text-[0.9rem]">
+      <i class="bi bi-house w-5 text-center" style="color: #6366f1;"></i> Home
+    </a>
+    
+    <a href="dentist.html" class="flex items-center gap-3 px-3 py-[0.6rem] text-slate-600 hover:bg-slate-100 hover:text-slate-900 rounded-lg font-medium mb-1 transition text-[0.9rem]">
+      <i class="bi bi-calendar-event w-5 text-center" style="color: #ec4899;"></i> Calendar
+    </a>
+    
+    <a href="past-records.html" class="flex items-center gap-3 px-3 py-[0.6rem] text-slate-600 hover:bg-slate-100 hover:text-slate-900 rounded-lg font-medium mb-1 transition text-[0.9rem]">
+      <i class="bi bi-clock-history w-5 text-center" style="color: #8b5cf6;"></i> History
+    </a>
+    
+    <div class="flex-1"></div>
+    <a href="index.html" class="flex items-center gap-3 px-3 py-[0.6rem] text-slate-600 hover:bg-slate-100 border border-slate-200 rounded-lg font-semibold transition mt-auto text-[0.9rem]" title="Sign Out">
+      <i class="bi bi-box-arrow-left w-5 text-center" style="color: #475569;"></i> Sign Out
+    </a>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <div class="flex-1 flex flex-col overflow-hidden bg-white">
+    
+    <!-- Topbar matching front-desk.html -->
+    <div class="px-8 py-6 shrink-0">
+      <div class="text-[0.85rem] font-medium text-slate-500">Dashboard / <span class="font-semibold text-slate-900">Home</span></div>
+      <div class="flex justify-between items-end mt-4">
+        <div>
+          <h2 class="font-bold text-[1.75rem] text-slate-900 mb-1">Welcome back, Dr. Zar</h2>
+          <p class="text-[0.9rem] text-slate-500 m-0">Here is your daily overview for Monday, September 23, 2024.</p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-2 bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Active License</span>
+          </div>
+          <div class="relative w-64">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </span>
+            <input type="text" placeholder="Search patient or ID..."
+              class="w-full bg-slate-50 text-sm pl-9 pr-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+          </div>
+          <button class="p-2 hover:bg-slate-100 rounded-lg text-slate-500 border border-transparent hover:border-slate-200 transition" title="Calendar View">
+            <i class="fa-regular fa-calendar"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 overflow-auto bg-white rounded-2xl border border-slate-200 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] flex flex-col mx-8 mb-8 mt-2">
+      <div class="p-6 space-y-6 max-w-6xl mx-auto w-full">
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-row items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Patients Today</p>
+              <h3 class="text-3xl font-bold text-slate-800 mt-1">12</h3>
+            </div>
+            <div
+              class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-xl border border-blue-100">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+
+          <div
+            class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-row items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Completed</p>
+              <h3 class="text-3xl font-bold text-emerald-600 mt-1">8</h3>
+            </div>
+            <div
+              class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center text-xl border border-emerald-100">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+          </div>
+
+          <div
+            class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-row items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Pending</p>
+              <h3 class="text-3xl font-bold text-amber-500 mt-1">4</h3>
+            </div>
+            <div
+              class="w-12 h-12 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center text-xl border border-amber-100">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Pending Queue -->
+          <div class="bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
+            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+              <h3 class="font-bold text-slate-800">Pending Queue</h3>
+              <span
+                class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm border border-amber-200">4
+                WAITING</span>
+            </div>
+            <ul class="divide-y divide-slate-100 overflow-y-auto max-h-[400px]">
+              <li class="p-4 hover:bg-slate-50 transition cursor-default">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-bold text-sm text-slate-800 uppercase tracking-wide">ALI BIN ABU</p>
+                    <p class="text-xs font-medium text-slate-500 mt-1">Scaling & Polishing</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-slate-700 block">10:30 AM</span>
+                    <span
+                      class="text-[10px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-1.5 inline-block">WAITING</span>
+                  </div>
+                </div>
+              </li>
+              <li class="p-4 hover:bg-slate-50 transition cursor-default">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-bold text-sm text-slate-800 uppercase tracking-wide">SARAH JANE</p>
+                    <p class="text-xs font-medium text-slate-500 mt-1">Checkup</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-slate-700 block">11:00 AM</span>
+                    <span
+                      class="text-[10px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-1.5 inline-block">WAITING</span>
+                  </div>
+                </div>
+              </li>
+              <li class="p-4 hover:bg-slate-50 transition cursor-default">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-bold text-sm text-slate-800 uppercase tracking-wide">MUTHU KUMAR</p>
+                    <p class="text-xs font-medium text-slate-500 mt-1">Filling</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-slate-700 block">11:30 AM</span>
+                    <span
+                      class="text-[10px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-1.5 inline-block">WAITING</span>
+                  </div>
+                </div>
+              </li>
+              <li class="p-4 hover:bg-slate-50 transition cursor-default">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-bold text-sm text-slate-800 uppercase tracking-wide">NUR AISYAH</p>
+                    <p class="text-xs font-medium text-slate-500 mt-1">Braces Adjustment</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-slate-700 block">02:00 PM</span>
+                    <span
+                      class="text-[10px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-1.5 inline-block">WAITING</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Completed Today -->
+          <div class="bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
+            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+              <h3 class="font-bold text-slate-800">Completed Today</h3>
+              <span
+                class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm border border-emerald-200">8
+                DONE</span>
+            </div>
+            <ul class="divide-y divide-slate-100 overflow-y-auto max-h-[400px]">
+              <li class="p-4 hover:bg-slate-50 transition cursor-default">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-bold text-sm text-slate-800 uppercase tracking-wide">SITI NURHALIZA</p>
+                    <p class="text-xs font-medium text-slate-500 mt-1">Braces Adjustment</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-slate-700 block">09:00 AM</span>
+                    <span
+                      class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 mt-1.5 inline-block">COMPLETED</span>
+                  </div>
+                </div>
+              </li>
+              <li class="p-4 hover:bg-slate-50 transition cursor-default">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-bold text-sm text-slate-800 uppercase tracking-wide">CHONG WEI</p>
+                    <p class="text-xs font-medium text-slate-500 mt-1">Extraction</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-slate-700 block">09:30 AM</span>
+                    <span
+                      class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 mt-1.5 inline-block">COMPLETED</span>
+                  </div>
+                </div>
+              </li>
+              <li class="p-4 hover:bg-slate-50 transition cursor-default">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-bold text-sm text-slate-800 uppercase tracking-wide">AHMAD BIN ABU</p>
+                    <p class="text-xs font-medium text-slate-500 mt-1">Scaling</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-slate-700 block">10:00 AM</span>
+                    <span
+                      class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 mt-1.5 inline-block">COMPLETED</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div> <!-- End App Container Wrapper -->
+
+  <!-- Scripts -->
+  <script src="assets/js/home-dentist.js"></script>
+
+</body>
+</html>

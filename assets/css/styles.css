@@ -1,0 +1,1088 @@
+/* ============================================================
+   Klinik Pergigian Sofea Taman Tas 
+   ============================================================ */
+
+:root {
+  /* Colors */
+  --color-bg: #f4f7f9;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f9;
+  --color-surface-3: #f8fafc;
+  --color-border: #e6eaef;
+  --color-border-strong: #d3dae3;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+
+  /* Primary teal */
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+  --color-primary-soft: #ecfdf5;
+  --brand-grad: linear-gradient(135deg, #0d9488 0%, #14b8a6 60%, #2dd4bf 100%);
+
+  /* States */
+  --color-success: #16a34a;
+  --color-success-soft: #f0fdf4;
+  --color-warning: #d97706;
+  --color-warning-soft: #fffbeb;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fef2f2;
+  --color-info: #1d4ed8;
+  --color-info-soft: #eff6ff;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.09);
+  --shadow-lg: 0 16px 44px rgba(15, 23, 42, 0.16);
+  --ring: 0 0 0 3px rgba(13, 148, 136, 0.18);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* Typography */
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fs-sm: 12.5px;
+  --fs-base: 14px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+
+  /* Treatment colors */
+  --treatment-braces: #0d9488;
+  --treatment-extraction: #ef4444;
+  --treatment-scaling: #3b82f6;
+  --treatment-filling: #f59e0b;
+  --treatment-checkup: #22c55e;
+  --treatment-mos: #a855f7;
+  --treatment-default: #64748b;
+
+  --transition-fast: 140ms ease;
+  --transition-slow: 200ms ease;
+
+  /* Front-desk chrome (ported from front-desk.html — keep identical) */
+  --app-bg: #e5e9f0;
+  --sidebar-width: 260px;
+  --border-color: #f1f5f9;
+}
+
+/* ---------- Reset & base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  color: var(--color-text-primary);
+  background:
+    radial-gradient(1200px 500px at 80% -10%, rgba(13, 148, 136, 0.06), transparent 60%),
+    var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ---------- Eyebrow label ---------- */
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-size: var(--fs-base);
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  background: transparent;
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast), box-shadow var(--transition-fast), transform 90ms ease;
+  white-space: nowrap;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.btn.ghost {
+  background: var(--color-surface);
+  border-color: var(--color-border-strong);
+}
+
+.btn.ghost:hover {
+  background: var(--color-surface-2);
+}
+
+.btn.icon-btn {
+  padding: 7px;
+  border-radius: var(--radius-sm);
+  border-color: transparent;
+  background: transparent;
+}
+
+.btn.icon-btn:hover {
+  background: var(--color-surface-2);
+}
+
+.btn.icon-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.btn.sm {
+  padding: 6px 11px;
+  font-size: var(--fs-sm);
+}
+
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---------- Brand header ---------- */
+
+/* Role badge with colored dot */
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  background: var(--color-surface-2);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.role-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  flex: none;
+}
+
+/* Reminders nav link */
+
+/* ---------- Layout ---------- */
+
+/* ---------- Access denied ---------- */
+.access-denied {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ---------- Topbars / date nav ---------- */
+
+.date-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.date-nav .btn.icon-btn {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+}
+
+.date-nav .btn.icon-btn:hover {
+  background: var(--color-surface-2);
+}
+
+/* ---------- Dashboard layout ---------- */
+
+/* ---------- Grid card ---------- */
+
+/* Day progress strip */
+
+.stat-chips {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Timeline slot table ---------- */
+.slot-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-height: calc(100vh - 320px);
+  min-height: 340px;
+  overflow-y: auto;
+}
+
+.slot-row {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.slot-row:last-child {
+  border-bottom: none;
+}
+
+.slot-time {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 6px 12px 6px 8px;
+  background: var(--color-surface-3);
+  border-right: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.slot-time::after {
+  content: "";
+  width: 7px;
+  height: 1px;
+  background: var(--color-border-strong);
+  flex: none;
+}
+
+.slot-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 6px 10px;
+  transition: background var(--transition-fast);
+}
+
+/* Free slot */
+.slot-cell.is-free {
+  background: var(--color-surface);
+  cursor: pointer;
+  border: 1px dashed var(--color-border-strong);
+  border-left: none;
+  border-right: none;
+}
+
+.slot-cell.is-free:hover {
+  background: var(--color-primary-soft);
+}
+
+/* Past slot */
+.slot-cell.is-past {
+  background: var(--color-surface-3);
+  cursor: not-allowed;
+  opacity: 0.5;
+  filter: saturate(0.25);
+}
+
+.slot-cell.is-past::after {
+  content: "past";
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Buffer slot */
+.slot-cell.is-buffer {
+  cursor: not-allowed;
+  background: repeating-linear-gradient(-45deg,
+      #eef2f6 0 7px,
+      #e2e8f0 7px 11px);
+}
+
+.slot-cell.is-buffer .buffer-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--color-text-muted);
+}
+
+.slot-cell.is-buffer .buffer-label svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Booked slot */
+.slot-cell.is-booked {
+  background: var(--color-surface-3);
+  cursor: default;
+  padding: 8px 10px;
+}
+
+/* ---------- Appointment card ---------- */
+.appointment-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--transition-fast), transform 90ms ease;
+}
+
+.slot-cell.is-booked:hover .appointment-card {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.patient-name {
+  font-weight: 700;
+  font-size: var(--fs-base);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.treatment-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  flex: none;
+}
+
+.notes-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--color-text-muted);
+  cursor: help;
+}
+
+.notes-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.notes-icon:hover {
+  color: var(--color-primary);
+}
+
+/* Hover actions on booked cards */
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 2px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Modals ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(15, 23, 42, 0.46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  animation: fadeIn 160ms ease forwards;
+  backdrop-filter: blur(2px);
+}
+
+.modal-backdrop.hidden {
+  display: none;
+}
+
+.modal-backdrop .modal {
+  width: min(560px, 94vw);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  animation: scaleIn 200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center;
+  overflow: hidden;
+}
+
+.modal-backdrop .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6) 0;
+}
+
+.modal-backdrop .modal-header h3 {
+  font-size: var(--fs-lg);
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.modal-backdrop .modal-header .modal-meta {
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+.modal-backdrop .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6) var(--space-6);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group>label {
+  font-weight: 650;
+  font-size: 13px;
+  color: var(--color-text-primary);
+}
+
+.input-wrap {
+  position: relative;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  font-size: var(--fs-md);
+  font-family: inherit;
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9aa7b8;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(13, 148, 136, 0.65);
+  box-shadow: var(--ring);
+  background: #fff;
+}
+
+.field-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--color-danger);
+  min-height: 0;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.field-error svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  margin-top: 2px;
+}
+
+/* Typeahead dropdown */
+.typeahead {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 70;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  padding: 4px;
+}
+
+.typeahead.hidden {
+  display: none;
+}
+
+/* Form error panel (red) */
+.form-error-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--color-danger-soft);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: var(--radius-md);
+  color: #991b1b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form-error-panel.hidden {
+  display: none;
+}
+
+/* Success panel */
+
+/* Confirm (cancel) modal */
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* ---------- Toasts ---------- */
+.toast-container {
+  position: fixed;
+  bottom: var(--space-5);
+  right: var(--space-5);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: min(360px, calc(100vw - 32px));
+}
+
+.toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 200ms ease, transform 200ms ease;
+  overflow: hidden;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.toast-icon {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.toast-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.toast-title {
+  font-weight: 750;
+  font-size: 13.5px;
+  color: var(--color-text-primary);
+}
+
+.toast-message {
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+.toast-close {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-close:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text-primary);
+}
+
+.toast-close svg {
+  width: 12px;
+  height: 12px;
+}
+
+.toast-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(148, 163, 184, 0.35);
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.toast.show .toast-progress {
+  animation: toastProgress 3.5s linear forwards;
+}
+
+/* ---------- Dentist view ---------- */
+
+.dentist-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast), transform 90ms ease;
+}
+
+.dentist-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.dentist-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--treatment-default);
+}
+
+.dentist-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.dentist-patient {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.dentist-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.dentist-meta svg {
+  width: 13px;
+  height: 13px;
+}
+
+.complex-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: 750;
+  background: rgba(168, 85, 247, 0.1);
+  color: #7e22ce;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.complex-label svg {
+  width: 12px;
+  height: 12px;
+}
+
+.dentist-card.complex {
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.08), var(--shadow-sm);
+}
+
+.dentist-card.complex::before {
+  background: var(--treatment-mos);
+}
+
+/* ---------- Reminders ---------- */
+
+.note-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 15px;
+  background: var(--color-info-soft);
+  border: 1px solid rgba(29, 78, 216, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-info);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.stat-chip.queued {
+  background: var(--color-warning-soft);
+  color: #92400e;
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+.stat-chip.sent {
+  background: var(--color-success-soft);
+  color: #166534;
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+.stat-chip.failed {
+  background: var(--color-danger-soft);
+  color: #991b1b;
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+/* ---------- Auth / role selection ---------- */
+
+/* ---------- Keyframes & motion ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.965);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes toastProgress {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+  .slot-table {
+    max-height: none;
+  }
+}
+
+/* ============================================================
+   Front Desk — slim app shell, calendar grid, summaries
+   Calendar values ported from front-desk.html (keep identical)
+   ============================================================ */
+
+/* Utility: class-based hide used by role gating / JS toggles */
+.hidden {
+  display: none !important;
+}
+
+/* Slim layout */
+
+body.app.front-desk {
+  background-color: var(--app-bg);
+}
+
+/* Date nav bar */
+.date-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Calendar area */
+
+.calendar-container {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+  background: #fafcff;
+  /* very light blue/gray matching the grid */
+}
+
+/* Slot table — identical values to the original front-desk.html override */
+.slot-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  min-height: auto;
+  max-height: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.slot-row {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.slot-time {
+  background: #fff;
+  border-right: 1px solid var(--border-color);
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1rem 0.75rem 1rem 0;
+}
+
+.slot-time::after {
+  display: none;
+}
+
+.slot-cell {
+  min-height: 80px;
+  padding: 0.5rem;
+  background: #fff;
+  border-right: none;
+  border-left: none;
+}
+
+.slot-cell.is-free {
+  border: none;
+  background: transparent;
+}
+
+.slot-cell.is-free:hover {
+  background: #f8fafc;
+}
+
+.appointment-card {
+  border: none;
+  border-left: 3px solid;
+  border-radius: 6px;
+  padding: 0.75rem;
+  height: 100%;
+  background: #eff6ff;
+  /* soft pastel base; MutationObserver recolors */
+  color: #1e3a8a;
+  box-shadow: none;
+}
+
+.appointment-card .patient-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+.appointment-card .treatment-pill {
+  background: transparent !important;
+  color: inherit;
+  padding: 0;
+  font-weight: 500;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.appointment-card .patient-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+/* Summaries + legend */
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.summary-item strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+
+.legend-item .legend-chip {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex: none;
+}
+
+@media (max-width: 768px) {
+
+  .calendar-container {
+    padding: 1rem;
+  }
+}
