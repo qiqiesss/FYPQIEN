@@ -131,14 +131,14 @@
       <aside class="w-64 bg-white flex flex-col border-l border-slate-200 shrink-0 overflow-y-auto p-3.5 space-y-3.5">
         
         <!-- Box 1: Selected Event / Appointment Card -->
-        <div class="bg-[#f1f3f7] rounded-2xl p-5 border border-slate-200/50 shadow-xs transition-all" id="sideEventCard">
+        <div class="bg-[#f1f3f7] rounded-2xl p-5 border border-slate-200/50 shadow-xs transition-all cursor-pointer hover:border-slate-300 group" id="sideEventCard" onclick="openDetailedModalFromSide()">
           <div class="flex items-center justify-between mb-1.5">
             <span class="text-[11px] font-medium text-slate-500 tracking-wide">Selected event</span>
             <span id="side-status-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
               In Consultation
             </span>
           </div>
-          <h3 id="side-patient-name" class="text-base font-bold text-slate-900 leading-snug">
+          <h3 id="side-patient-name" class="text-base font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
             Ms. Hannah Fatheehah
           </h3>
           <p id="side-appt-time" class="text-xs text-slate-500 font-medium mt-0.5">
@@ -148,7 +148,7 @@
           <div class="mt-4 pt-3 border-t border-slate-200/70">
             <div class="flex items-center justify-between mb-1">
               <span class="text-xs font-bold text-slate-800">Notes</span>
-              <button type="button" onclick="openDetailedModalFromSide()" class="text-[10px] text-blue-600 hover:underline font-semibold flex items-center gap-1">
+              <button type="button" onclick="event.stopPropagation(); openDetailedModalFromSide()" class="text-[10px] text-blue-600 hover:underline font-semibold flex items-center gap-1">
                 <i class="fa-solid fa-up-right-from-square text-[9px]"></i> View Full
               </button>
             </div>
@@ -224,99 +224,103 @@
   </div>
 
   <div id="patient-modal"
-    class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center z-50 hidden">
+    class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 hidden transition-opacity duration-200">
     <div
-      class="bg-white w-full max-w-lg rounded-xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-150">
+      class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-150 mx-4">
 
-      <div class="bg-slate-900 text-white px-5 py-3.5 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-          <i class="fa-solid fa-file-medical text-blue-400"></i>
-          <h3 class="font-bold text-sm tracking-wide">Patient Appointment Details</h3>
+      <!-- Header -->
+      <div class="bg-slate-900 text-white px-5 py-4 flex justify-between items-center border-b border-slate-800">
+        <div class="flex items-center space-x-2.5">
+          <i class="fa-solid fa-file-medical text-blue-400 text-base"></i>
+          <h3 class="font-bold text-sm tracking-wide text-white">Patient Appointment Details</h3>
         </div>
-        <button onclick="closePatientModal()" class="text-slate-400 hover:text-white p-1 rounded transition">
-          <i class="fa-solid fa-xmark text-lg"></i>
+        <button onclick="closePatientModal()" class="text-slate-400 hover:text-white p-1 rounded-lg transition hover:bg-slate-800">
+          <i class="fa-solid fa-xmark text-lg leading-none"></i>
         </button>
       </div>
 
-      <div class="p-6 space-y-4 max-h-[75vh] overflow-y-auto text-xs">
+      <!-- Modal Body -->
+      <div class="p-5 space-y-3.5 max-h-[78vh] overflow-y-auto text-xs bg-[#f8fafc] custom-scrollbar">
 
-        <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-200 space-y-2">
-          <h4 class="font-bold text-slate-700 uppercase text-[10px] tracking-wider mb-2 border-b border-slate-200 pb-1">
+        <!-- Card 1: Patient Information -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-2">
+          <h4 class="font-bold text-slate-700 uppercase text-[10px] tracking-wider pb-1.5 border-b border-slate-100 mb-2">
             Patient Information</h4>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Full Name:</span>
-            <span id="modal-patient-name" class="col-span-2 font-bold text-slate-900">MS. HANNAH FATHEEHAH BINTI AHMAD
-              SALSABILA SUHAIMI</span>
+            <span id="modal-patient-name" class="col-span-2 font-bold text-slate-900 uppercase">MS. ZAHRAH BINTI ABDULLAH</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Date of Birth:</span>
-            <span class="col-span-2 text-slate-800">18 MAY 1988 (36 Years)</span>
+            <span id="modal-patient-dob" class="col-span-2 text-slate-800">18 MAY 1988 (36 Years)</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Gender:</span>
-            <span class="col-span-2 text-slate-800">Female</span>
+            <span id="modal-patient-gender" class="col-span-2 text-slate-800">Female</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Patient ID:</span>
-            <span id="modal-patient-id" class="col-span-2 font-semibold text-blue-600">BRIEF-414305</span>
+            <span id="modal-patient-id" class="col-span-2 font-bold text-blue-600">BRIEF-414301</span>
           </div>
         </div>
 
-        <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-200 space-y-2">
-          <h4 class="font-bold text-slate-700 uppercase text-[10px] tracking-wider mb-2 border-b border-slate-200 pb-1">
+        <!-- Card 2: Appointment Specs -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-2">
+          <h4 class="font-bold text-slate-700 uppercase text-[10px] tracking-wider pb-1.5 border-b border-slate-100 mb-2">
             Appointment Specs</h4>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Appointment ID:</span>
-            <span class="col-span-2 font-semibold text-slate-800">APT-783421</span>
+            <span id="modal-appt-id" class="col-span-2 font-bold text-slate-900">APT-783421</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs items-center">
             <span class="text-slate-500 font-medium">Status:</span>
-            <span class="col-span-2"><span id="modal-status-badge"
-                class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold text-[10px]">In
-                Consultation</span></span>
+            <div class="col-span-2">
+              <span id="modal-status-badge"
+                class="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-bold text-[10px] inline-block">Completed</span>
+            </div>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Date & Time:</span>
-            <span id="modal-time" class="col-span-2 font-semibold text-slate-800">23 SEP 2024, 12:00 PM - 12:30
-              PM</span>
+            <span id="modal-time" class="col-span-2 font-bold text-slate-900">23 SEP 2024, 09:00 AM - 09:30 AM</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Assigned To:</span>
-            <span class="col-span-2 text-slate-800">DR. ZAR (Room 2)</span>
+            <span id="modal-assigned-to" class="col-span-2 text-slate-800">DR. ZAR (Room 2)</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Reason:</span>
-            <span class="col-span-2 text-slate-800">Follow-up Consultation & Vital Check</span>
+            <span id="modal-reason" class="col-span-2 text-slate-800">Follow-up Consultation & Vital Check</span>
           </div>
         </div>
 
-        <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-200 space-y-2">
-          <h4 class="font-bold text-slate-700 uppercase text-[10px] tracking-wider mb-2 border-b border-slate-200 pb-1">
+        <!-- Card 3: Contact & Clinical Notes -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-2">
+          <h4 class="font-bold text-slate-700 uppercase text-[10px] tracking-wider pb-1.5 border-b border-slate-100 mb-2">
             Contact & Clinical Notes</h4>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Contact Number:</span>
-            <span id="modal-phone" class="col-span-2 font-semibold text-slate-800">+60142648460</span>
+            <span id="modal-phone" class="col-span-2 font-bold text-slate-900">+6012-345-6781</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Email:</span>
-            <span class="col-span-2 text-slate-800">hannah.salsabila@email.com</span>
+            <span id="modal-email" class="col-span-2 text-slate-800">hannah.salsabila@email.com</span>
           </div>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-2 text-xs">
             <span class="text-slate-500 font-medium">Clinical Notes:</span>
-            <span class="col-span-2 text-slate-800 leading-relaxed">Allergic to Penicillin. Monitor blood pressure
-              closely. Previous check-up: 20 AUG 2024.</span>
+            <span id="modal-clinical-notes" class="col-span-2 text-slate-800 leading-relaxed">Allergic to Penicillin. Monitor blood pressure closely. Previous check-up: 20 AUG 2024.</span>
           </div>
         </div>
 
       </div>
 
-      <div class="bg-slate-100 px-6 py-3 border-t border-slate-200 flex justify-between items-center">
-        <span class="text-[11px] text-slate-500">Last updated: 23 Sep 2024, 11:45 AM</span>
+      <!-- Footer -->
+      <div class="bg-slate-100/90 px-6 py-3.5 border-t border-slate-200 flex justify-between items-center">
+        <span id="modal-last-updated" class="text-[11px] text-slate-500 font-medium">Last updated: 23 Sep 2024, 11:45 AM</span>
         <div class="flex space-x-2">
           <button onclick="closePatientModal()"
-            class="px-4 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium rounded transition">Close</button>
-          <button onclick="showAlertAction('Patient record updated successfully!')"
-            class="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded shadow-xs transition">Save
+            class="px-4 py-2 bg-slate-200/90 hover:bg-slate-300 text-slate-700 font-semibold text-xs rounded-lg transition">Close</button>
+          <button onclick="savePatientModalChanges()"
+            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-lg shadow-xs transition">Save
             Changes</button>
         </div>
       </div>
@@ -331,12 +335,12 @@
 
   <!-- Floating Hover Popover for Appointment Details -->
   <div id="calendar-hover-popover"
-    class="fixed pointer-events-none z-50 hidden opacity-0 transition-opacity duration-150 transform -translate-x-1/2 -translate-y-full mb-2"
+    class="fixed z-50 hidden opacity-0 transition-opacity duration-150 transform -translate-x-1/2 -translate-y-full mb-2 cursor-pointer select-none"
     style="filter: drop-shadow(0 10px 25px rgba(0,0,0,0.12));">
     <div class="bg-white rounded-xl border border-slate-200 p-3.5 w-64 text-xs shadow-xl space-y-2">
       <div class="flex items-center justify-between">
         <span id="popover-status" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Completed</span>
-        <span id="popover-id" class="text-[10px] font-semibold text-slate-400">BRIEF-414301</span>
+        <span id="popover-id" class="text-[10px] font-semibold text-slate-400">BRIEF-000001</span>
       </div>
       <div>
         <h4 id="popover-name" class="font-bold text-slate-900 text-xs leading-snug">Patient Name</h4>
@@ -352,7 +356,7 @@
           <span id="popover-phone">+6012-345-6781</span>
         </div>
       </div>
-      <div class="text-[10px] text-slate-400 italic pt-1 border-t border-slate-50 flex items-center justify-between">
+      <div class="text-[10px] text-slate-400 italic pt-1 border-t border-slate-50 flex items-center justify-between group-hover:text-blue-600">
         <span>Click to view details</span>
         <i class="fa-solid fa-arrow-pointer text-[9px]"></i>
       </div>
