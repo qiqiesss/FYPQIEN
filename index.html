@@ -7,43 +7,72 @@
   <title>Klinik Pergigian Sofea Taman Tas — Login</title>
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="assets/css/index.css" />
+  <link rel="stylesheet" href="assets/css/index.css?v=3" />
 </head>
 
 <body class="auth">
 
-  <!-- BACKGROUND VIDEO ELEMENT ADDED HERE -->
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="assets/videos/login.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <!-- NestJS-Style Dark Blue Animated Gradient Background with Cursor Reactivity -->
+  <div class="gradient-bg-container" aria-hidden="true" id="gradientCanvas">
+    <div class="cursor-spotlight" id="cursorSpotlight"></div>
+    <div class="gradient-orb orb-1" id="orb1"></div>
+    <div class="gradient-orb orb-2" id="orb2"></div>
+    <div class="gradient-orb orb-3" id="orb3"></div>
+    <div class="gradient-orb orb-4" id="orb4"></div>
+    <div class="gradient-noise"></div>
+    <div class="gradient-vignette"></div>
+  </div>
 
   <div class="login-container">
     <div class="login-card">
-      <div class="brand-icon">
-        <img src="assets/images/icon-removebg.jpg">
+      <div class="brand-header text-center">
+        <div class="brand-emblem-badge" title="Klinik Pergigian Sofea">
+          <svg class="brand-tooth-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+              d="M20 10C12 10 8 16 8 26C8 38 16 52 24 58C27 60 30 58 31 53C32 48 32 40 32 40C32 40 32 48 33 53C34 58 37 60 40 58C48 52 56 38 56 26C56 16 52 10 44 10C38 10 35 14 32 17C29 14 26 10 20 10Z"
+              stroke="url(#toothGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+              fill="url(#toothFill)" />
+            <path d="M22 17C26 18 30 22 32 26" stroke="url(#toothGrad)" stroke-width="2.5" stroke-linecap="round" />
+            <circle cx="43" cy="21" r="3.5" fill="#38bdf8" filter="drop-shadow(0 0 6px #38bdf8)" />
+            <defs>
+              <linearGradient id="toothGrad" x1="8" y1="10" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38bdf8" />
+                <stop offset="0.5" stop-color="#60a5fa" />
+                <stop offset="1" stop-color="#2563eb" />
+              </linearGradient>
+              <linearGradient id="toothFill" x1="8" y1="10" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38bdf8" stop-opacity="0.18" />
+                <stop offset="1" stop-color="#2563eb" stop-opacity="0.05" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h4 class="brand-title">Klinik Pergigian <span class="brand-highlight">Sofea</span></h4>
+        <div class="brand-location-badge">
+          <i class="fa-solid fa-location-dot"></i> Taman Tas, Kuantan
+        </div>
+        <p class="subtitle">Scheduling &amp; Patient Portal</p>
       </div>
-      <h4>Klinik Pergigian Sofea Taman Tas</h4>
-      <p class="subtitle">Scheduling &amp; Reminders System</p>
 
       <form id="loginForm">
         <!-- Role Selection -->
         <div class="role-toggle" id="roleGroup">
           <button type="button" class="role-btn active" data-role="admin">
-            <i class="bi bi-person-badge"></i> Admin
+            <i class="fa-solid fa-clipboard-user"></i> Admin
           </button>
           <button type="button" class="role-btn" data-role="dentist">
-            <i class="bi bi-person-heart"></i> Dentist
+            <i class="fa-solid fa-user-doctor"></i> Dentist
           </button>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="usernameInput">Username</label>
           <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
             <input type="text" class="form-control" id="usernameInput" placeholder="Enter username" required
               value="admin">
           </div>
@@ -52,7 +81,7 @@
         <div class="mb-3">
           <label class="form-label" for="passwordInput">Password</label>
           <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
             <input type="password" class="form-control" id="passwordInput" placeholder="Enter password" required
               value="admin123">
           </div>
@@ -61,19 +90,19 @@
         <div id="loginError" class="alert alert-danger py-1.5 px-3 small mb-3 d-none" role="alert"></div>
 
         <button type="submit" class="btn btn-login">
-          Sign In <i class="bi bi-arrow-right ms-2"></i>
+          Sign In <i class="fa-solid fa-arrow-right"></i>
         </button>
       </form>
 
       <div class="footer-note mt-3">
-        <span class="badge bg-light text-dark border me-1">KPSTS</span> Internal Portal
+        <span class="badge bg-light text-dark border me-1">KPSTT</span> Internal Portal
       </div>
     </div>
   </div>
 
   <!-- Scripts -->
   <script src="assets/js/app.js"></script>
-  <script src="assets/js/index.js"></script>
+  <script src="assets/js/index.js?v=3"></script>
 
 </body>
 
